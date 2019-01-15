@@ -2,9 +2,8 @@
  * Project 4 - OOP Game App
  * Phrase.js */
 class Phrase {
-    constructor(phrase, source) {
+    constructor(phrase) {
         this.phrase = phrase.toLowerCase();
-        this.source = source;
     }
 
     /**
@@ -29,7 +28,11 @@ class Phrase {
      * @returns {boolean} - True/false returned based on if the letter was correctly chosen
      */
     checkLetter(letter) {
-
+        if (this.phrase.includes(letter)) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     /**
@@ -37,6 +40,8 @@ class Phrase {
      * @param {string} letter - The letter guessed by the player
      */
     showMatchedLetter(letter) {
-
+        const Letter = $(`.${letter}`);
+        Letter.removeClass('hide');
+        Letter.addClass('show');
     }
 }

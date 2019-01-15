@@ -6,5 +6,4 @@ OOP Game Show App
     - Dark background
     - Change heart symbols
     - Hover action on keys
-- Have the source appear when the phrase is solved
 - Generate phrases from [this Quote API](https://theysaidso.com/api/#random)

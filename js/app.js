@@ -11,6 +11,7 @@ $('#btn__reset').click(() => {
 
  // listen for clicks on all keyboard elements
 $('.key').click(e => {
-    const key = $(e.target).text();
-    game.handleInteraction(key);
+    const key = $(e.target);
+    const letter = key.text();
+    game.handleInteraction(letter, key);
 })

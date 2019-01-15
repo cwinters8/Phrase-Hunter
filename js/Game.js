@@ -7,11 +7,11 @@ class Game {
     constructor() {
         this.missed = 0;
         this.phrases = [
-            new Phrase('Do or do not there is no try', 'Yoda'),
-            new Phrase('Injustice anywhere is a threat to justice everywhere', 'Martin Luther King Jr.'),
-            new Phrase('Whatever you do do it well', 'Walt Disney'),
-            new Phrase('When words fail music speaks', 'Shakespeare'),
-            new Phrase('Knowledge is power', 'Francis Bacon')
+            new Phrase('Once in a blue moon'),
+            new Phrase('Piece of cake'),
+            new Phrase('The best of both worlds'),
+            new Phrase('Speak of the devil'),
+            new Phrase('Knowledge is power')
         ];
         this.activePhrase = null;
     }
@@ -21,8 +21,14 @@ class Game {
      */
     startGame() {
         overlay.hide();
-        const phrase = this.getRandomPhrase();
-        phrase.addPhraseToDisplay();
+        // reset the game
+        $('#phrase ul').empty();
+        $('.key').removeClass('chosen').removeClass('wrong').removeAttr('disabled');
+        $('#scoreboard img[src="images/lostHeart.png"]').attr('src', 'images/liveHeart.png');
+
+        // add a new phrase
+        this.activePhrase = this.getRandomPhrase();
+        this.activePhrase.addPhraseToDisplay();
     }
 
     /**
@@ -37,29 +43,63 @@ class Game {
     /**
      * Controls game logic
      * @param {string} letter - Letter guessed by player
+     * @param {object} key - Key jQuery DOM object
      */
-    handleInteraction(letter) {
-        
+    handleInteraction(letter, key) {
+        // disable key
+        key.attr('disabled', 'disabled');
+        // validate guess
+        const check = this.activePhrase.checkLetter(letter);
+        if (check) {
+            this.activePhrase.showMatchedLetter(letter);
+            key.addClass('chosen');
+            const win = this.checkForWin();
+            if (win) {
+                this.gameOver('win');
+            }
+        } else {
+            key.addClass('wrong');
+            this.removeLife();
+        }
     }
 
     /**
      * Handles incorrect guesses
      */
     removeLife() {
-
+        this.missed++;
+        if (this.missed < 5) {
+            const lives = $('#scoreboard img[src="images/liveHeart.png"]');
+            lives.first().attr('src', 'images/lostHeart.png');
+        } else {
+            this.gameOver('lose');
+        }
     }
 
     /**
      * Checks to see if the player has revealed all of the letters in the active phrase
+     * @returns {boolean}
      */
     checkForWin() {
-
+        if ($('.show, .space').length === this.activePhrase.phrase.length) {
+            return true;
+        }
     }
 
     /**
      * Ends the game and displays a win/loss message
+     * @param {string} outcome - 'win' or 'lose'
      */
-    gameOver() {
-
+    gameOver(outcome) {
+        const message = $('#game-over-message');
+        overlay.removeClass('start');
+        if (outcome === 'win') {
+            message.text('You won!')
+            overlay.addClass('win');
+        } else {
+            message.text('Better luck next time!')
+            overlay.addClass('lose');
+        }
+        overlay.show();
     }
 }
