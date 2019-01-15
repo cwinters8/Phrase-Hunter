@@ -7,11 +7,11 @@ class Game {
     constructor() {
         this.missed = 0;
         this.phrases = [
-            {phrase: 'Do or do not there is no try', source: 'Yoda'},
-            {phrase: 'Injustice anywhere is a threat to justice everywhere', source: 'MLK Jr'},
-            {phrase: 'Whatever you do do it well', source: 'Walt Disney'},
-            {phrase: 'When words fail music speaks', source: 'Shakespeare'},
-            {phrase: 'Knowledge is power', source: 'Francis Bacon'}
+            new Phrase('Do or do not there is no try', 'Yoda'),
+            new Phrase('Injustice anywhere is a threat to justice everywhere', 'Martin Luther King Jr.'),
+            new Phrase('Whatever you do do it well', 'Walt Disney'),
+            new Phrase('When words fail music speaks', 'Shakespeare'),
+            new Phrase('Knowledge is power', 'Francis Bacon')
         ];
         this.activePhrase = null;
     }
@@ -21,6 +21,8 @@ class Game {
      */
     startGame() {
         overlay.hide();
+        const phrase = this.getRandomPhrase();
+        phrase.addPhraseToDisplay();
     }
 
     /**
@@ -28,7 +30,8 @@ class Game {
      * @returns {object} - Phrase object
      */
     getRandomPhrase() {
-
+        const random = Math.floor(Math.random() * this.phrases.length);
+        return this.phrases[random];
     }
 
     /**
@@ -36,7 +39,7 @@ class Game {
      * @param {string} letter - Letter guessed by player
      */
     handleInteraction(letter) {
-        console.log(`handling interaction of guess ${letter}`);
+        
     }
 
     /**
