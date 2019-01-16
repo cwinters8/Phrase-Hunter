@@ -16,7 +16,7 @@ $('.key').click(e => {
     game.handleInteraction(letter, key);
 })
 
-document.addEventListener('keypress', e => {
+$(document).keypress(e => {
     const letter = e.key;
     if ($('#overlay').is(':hidden')) {
         const key = $(`.key:contains(${letter})`);

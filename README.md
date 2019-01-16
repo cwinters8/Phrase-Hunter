@@ -1,14 +1,13 @@
 # Treehouse-FSJS-Project4
 OOP Game Show App
 
+After starting the game, the player can guess letters until they either guess the phrase or lose. The player is allowed five incorrect guesses.
+
 ## Style changes
 - Added a note on how to start the game, including a keyboard shortcut
-- 
-
-## Future improvements
-- Design changes:
-    - Dark background
-    - Change heart symbols
-    - Hover action on keys
-- Generate phrases from [this Quote API](https://theysaidso.com/api/#random)
-
+- Changed lose overlay background color
+- Changed wrongly selected key color
+- Increased heart width
+- Added hover effects to keys
+- Disabled pointer on disabled keys
+- Made all the keys the same size
