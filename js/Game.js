@@ -25,6 +25,7 @@ class Game {
         $('#phrase ul').empty();
         $('.key').removeClass('chosen').removeClass('wrong').removeAttr('disabled');
         $('#scoreboard img[src="images/lostHeart.png"]').attr('src', 'images/liveHeart.png');
+        overlay.removeClass('win').removeClass('lose');
 
         // add a new phrase
         this.activePhrase = this.getRandomPhrase();

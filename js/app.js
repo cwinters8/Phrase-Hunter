@@ -15,3 +15,14 @@ $('.key').click(e => {
     const letter = key.text();
     game.handleInteraction(letter, key);
 })
+
+document.addEventListener('keypress', e => {
+    const letter = e.key;
+    if ($('#overlay').is(':hidden')) {
+        const key = $(`.key:contains(${letter})`);
+        game.handleInteraction(letter, key);
+    } else if (letter === 's') {
+        game = new Game();
+        game.startGame();
+    }
+})
