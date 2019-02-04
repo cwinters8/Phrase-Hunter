@@ -11,3 +11,5 @@ CSS
 
 ## Future Improvements
 - Generate phrases from a database
+- Make game background darker
+- Find a better red color for 'lost' page
