@@ -15,4 +15,4 @@ CSS
 - Find a better red color for 'lost' page
 
 ## Credits
-The majority of the HTML and CSS were provided by [Team Treehouse](https://teamtreehouse.com).
+The majority of the HTML and CSS were provided by [Team Treehouse](http://referrals.trhou.se/clarkwinters).
