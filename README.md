@@ -13,3 +13,6 @@ CSS
 - Generate phrases from a database
 - Make game background darker
 - Find a better red color for 'lost' page
+
+## Credits
+The majority of the HTML and CSS were provided by [Team Treehouse](https://teamtreehouse.com).
