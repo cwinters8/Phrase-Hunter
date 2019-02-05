@@ -11,6 +11,7 @@ CSS
 
 ## Future Improvements
 - Generate phrases from a database
+- Add a small info message that lets a user know they can use their keyboard if they are clicking letters with the mouse
 - Make game background darker
 - Find a better red color for 'lost' page
 
